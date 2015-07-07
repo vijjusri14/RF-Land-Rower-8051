@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Vijju\Desktop\My Workspace\RF Rover\RF Rover Code\Transmitter\Tx.uvproj
+Project File Date:  04/27/2015
+
+<h2>Output:</h2>
+compiling Tx.c...
+Tx.c(73): error C141: syntax error near '='
+Tx.c(75): error C141: syntax error near '='
+Tx.c - 2 Error(s), 0 Warning(s).
+compiling Tx.c...
+Tx.c(73): error C141: syntax error near '.4'
+Tx.c(75): error C141: syntax error near '.4'
+Tx.c - 2 Error(s), 0 Warning(s).
+compiling Tx.c...
+Tx.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=34.0 xdata=0 code=460
+creating hex file from "Tx"...
+"Tx" - 0 Error(s), 0 Warning(s).

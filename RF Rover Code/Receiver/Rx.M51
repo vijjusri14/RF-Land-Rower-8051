@@ -1,0 +1,151 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/27/2015  16:11:56  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Rx.obj TO Rx RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Rx.obj (RX)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  Rx (RX)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0041H     UNIT         ?PR?CONTROLROBOT?RX
+            CODE    0047H     003BH     UNIT         ?PR?EXT0?RX
+            CODE    0082H     0011H     UNIT         ?PR?_DELAY?RX
+            CODE    0093H     000CH     UNIT         ?C_C51STARTUP
+            CODE    009FH     0008H     UNIT         ?PR?MAIN?RX
+
+
+
+OVERLAY MAP OF MODULE:   Rx (RX)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?PR?EXT0?RX                    -----    -----
+  +--> ?PR?CONTROLROBOT?RX
+
+?PR?CONTROLROBOT?RX            0008H    0001H
+  +--> ?PR?_DELAY?RX
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?RX
+
+
+
+SYMBOL TABLE OF MODULE:  Rx (RX)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2015  16:11:56  PAGE 2
+
+
+  -------         MODULE        RX
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  C:0047H         PUBLIC        ext0
+  B:00A8H.7       PUBLIC        EA
+  C:0082H         PUBLIC        _delay
+  C:009FH         PUBLIC        main
+  C:0006H         PUBLIC        controlrobot
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  -------         PROC          MAIN
+  C:009FH         LINE#         6
+  C:009FH         LINE#         7
+  C:009FH         LINE#         8
+  C:00A1H         LINE#         9
+  C:00A3H         LINE#         10
+  C:00A5H         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         PROC          EXT0
+  C:0047H         LINE#         14
+  C:0064H         LINE#         16
+  C:0067H         LINE#         17
+  -------         ENDPROC       EXT0
+  -------         PROC          CONTROLROBOT
+  -------         DO            
+  D:0007H         SYMBOL        a
+  D:0008H         SYMBOL        b
+  -------         ENDDO         
+  C:0006H         LINE#         19
+  C:0006H         LINE#         20
+  C:0006H         LINE#         22
+  C:0008H         LINE#         23
+  C:000BH         LINE#         24
+  C:000BH         LINE#         25
+  C:000BH         LINE#         26
+  C:000FH         LINE#         27
+  C:001FH         LINE#         28
+  C:001FH         LINE#         29
+  C:001FH         LINE#         30
+  C:001FH         LINE#         31
+  C:0022H         LINE#         32
+  C:0024H         LINE#         33
+  C:0024H         LINE#         34
+  C:0024H         LINE#         35
+  C:0024H         LINE#         36
+  C:0027H         LINE#         37
+  C:0029H         LINE#         38
+  C:0029H         LINE#         39
+  C:0029H         LINE#         40
+  C:0029H         LINE#         41
+  C:002CH         LINE#         42
+  C:002EH         LINE#         43
+  C:002EH         LINE#         44
+  C:002EH         LINE#         45
+  C:002EH         LINE#         46
+  C:0031H         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2015  16:11:56  PAGE 3
+
+
+  C:0033H         LINE#         48
+  C:0033H         LINE#         49
+  C:0033H         LINE#         50
+  C:0033H         LINE#         51
+  C:0036H         LINE#         52
+  C:0036H         LINE#         53
+  C:0036H         LINE#         54
+  C:0036H         LINE#         55
+  C:0039H         LINE#         56
+  C:0040H         LINE#         57
+  C:0042H         LINE#         58
+  C:0045H         LINE#         59
+  -------         ENDPROC       CONTROLROBOT
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        count
+  C:0082H         LINE#         62
+  C:0082H         LINE#         63
+  C:0082H         LINE#         64
+  C:008BH         LINE#         65
+  C:008BH         LINE#         66
+  C:0090H         LINE#         67
+  C:0092H         LINE#         68
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        RX
+
+Program Size: data=10.0 xdata=0 code=167
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

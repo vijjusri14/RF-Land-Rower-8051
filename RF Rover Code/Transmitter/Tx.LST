@@ -1,0 +1,144 @@
+C51 COMPILER V9.50a   TX                                                                   04/27/2015 15:32:38 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE TX
+OBJECT MODULE PLACED IN Tx.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Tx.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <REG51.H>
+   2          
+   3          void delay(unsigned int);
+   4          void putc(char);
+   5          void puts(char*);
+   6          char getc();
+   7          void send(char);
+   8          
+   9          char *Direction = "Direction : ";
+  10          char *Right = "Right";
+  11          char *Left = "Left";
+  12          char *Forward = "Forward";
+  13          char *Reverse = "Reverse";
+  14          char *Stop = "Stop";
+  15          
+  16          sbit xx=P1^4;
+  17          
+  18          void main()
+  19          { 
+  20   1        char a, temp;
+  21   1        char *temp1, *temp2;
+  22   1      
+  23   1        SCON  = 0x50;                     /* SCON: mode 1, 8-bit UART, enable rcvr    */
+  24   1        TMOD |= 0x20;                     /* TMOD: timer 1, mode 2, 8-bit reload      */
+  25   1        TH1   = 0xFD;                     /* TH1:  reload value for 9600 baud         */  
+  26   1        TR1   = 1;                        /* TR1:  timer 1 run                */
+  27   1      
+  28   1        while(1)
+  29   1        {   
+  30   2          a = getc();
+  31   2                    
+  32   2          switch(a)
+  33   2          {
+  34   3            case 'R' :
+  35   3                {
+  36   4                  temp1 = Right;                        
+  37   4                  temp = 0x01;
+  38   4                  break;
+  39   4                }
+  40   3            case 'L' :
+  41   3                {
+  42   4                  temp1 = Left;
+  43   4                  temp = 0x02;
+  44   4                  break;
+  45   4                }
+  46   3            case 'F' :
+  47   3                {
+  48   4                  temp1 = Forward;            
+  49   4                  temp = 0x04;
+  50   4                  break;
+  51   4                }
+  52   3            case 'B' :
+  53   3                {
+  54   4                  temp1 = Reverse;            
+  55   4                  temp = 0x08;
+C51 COMPILER V9.50a   TX                                                                   04/27/2015 15:32:38 PAGE 2   
+
+  56   4                  break;
+  57   4                }
+  58   3            default :
+  59   3                {
+  60   4                  temp1 = Stop;           
+  61   4                  temp = 0x00;
+  62   4                  break;
+  63   4                }     
+  64   3          }
+  65   2          temp2 = temp1;
+  66   2          puts(temp2);
+  67   2          send(temp);
+  68   2          delay(100);
+  69   2        }
+  70   1      }
+  71                
+  72          void send(char temp)
+  73          {
+  74   1        P1 = temp;
+  75   1        xx=0;
+  76   1        delay(1000);
+  77   1        xx=1;
+  78   1      }     
+  79                  
+  80          void putc(char b)
+  81          {
+  82   1        SBUF = b;
+  83   1        while(TI==0);
+  84   1        TI=0;   
+  85   1      }
+  86          
+  87          void puts(char* ptr)
+  88          {
+  89   1        while(*ptr != 0x00)
+  90   1        {
+  91   2          putc(*ptr);
+  92   2          ptr++;
+  93   2        }
+  94   1        putc('\r');
+  95   1        putc('\n');
+  96   1      }
+  97          
+  98          char getc()
+  99          { 
+ 100   1        char chr;
+ 101   1        while(RI==0);
+ 102   1        chr = SBUF;
+ 103   1        RI=0;   
+ 104   1        return chr;
+ 105   1      }
+ 106          
+ 107          void delay(unsigned int count)
+ 108          {
+ 109   1        unsigned int count1;
+ 110   1        for(count1 = 0xFF; count1 !=0; count1--)
+ 111   1        {
+ 112   2          while(count > 0)
+ 113   2            {
+ 114   3            count--;
+ 115   3            }
+ 116   2        }
+ 117   1      }
+C51 COMPILER V9.50a   TX                                                                   04/27/2015 15:32:38 PAGE 3   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    216    ----
+   CONSTANT SIZE    =     45    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     18       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
